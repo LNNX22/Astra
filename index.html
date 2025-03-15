@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <title>AstraAI</title>
+    <style>
+        /* Floating help button */
+        #helpButton {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: #007bff;
+            color: white;
+            font-size: 24px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        /* Help panel */
+        #helpPanel {
+            position: fixed;
+            bottom: -150px;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            padding: 15px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: bottom 0.3s ease;
+        }
+
+        /* Show panel */
+        #helpPanel.active {
+            bottom: 0;
+        }
+
+        /* Arrow rotation when active */
+        #helpButton.active {
+            transform: translateX(-50%) rotate(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    
+    <nav class="navbar">
+        <h3 class="navbar__logo">Astra</h3>
+        <button class="navbar__button" id="themeToggler"><i class='bx bx-sun'></i></button>
+    </nav>
+
+    <header class="header">
+        <div class="header__title">
+            <h1>Hello, There!</h1>
+            <h2>How can I help?</h2>
+        </div>
+    </header>
+
+    <section class="chats"></section>
+
+    <section class="prompt">
+        <form action="#" class="prompt__form" novalidate>
+            <div class="prompt__input-wrapper">
+                <input type="text" placeholder="Enter a prompt here" class="prompt__form-input" required>
+                <button class="prompt__form-button" id="sendButton">
+                    <i class='bx bx-send'></i>
+                </button>
+                <button class="prompt__form-button" id="deleteButton">
+                    <i class='bx bx-trash'></i>
+                </button>
+            </div>
+        </form>
+        <p class="prompt__disclaim">
+            Astra may display inaccurate information, it is best to double-check its responses.
+        </p>
+    </section>
+
+    <!-- Help Panel -->
+    <div id="helpPanel">
+        <p>Need help? This is Astra, your AI assistant. You can ask me anything!</p>
+    </div>
+
+    <!-- Arrow Button -->
+    <button id="helpButton"><i class='bx bx-chevron-up'></i></button>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        const helpButton = document.getElementById("helpButton");
+        const helpPanel = document.getElementById("helpPanel");
+
+        helpButton.addEventListener("click", function() {
+            helpPanel.classList.toggle("active");
+            helpButton.classList.toggle("active");
+        });
+    </script>
+</body>
+</html>
