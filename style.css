@@ -108,6 +108,14 @@ body.hide-header .header{
     font-weight: 600;
 }
 
+.header__title sub{
+    color: var(--heading-secondary-color);
+    font-size: 0.rem;
+    font-weight: 600;
+}
+
+
+
 .suggests{
     display: flex;
     align-items: center;
