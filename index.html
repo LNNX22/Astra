@@ -11,9 +11,8 @@
         /* Floating help button */
         #helpButton {
             position: fixed;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
+            bottom: 20px;
+            right: 20px;
             width: 50px;
             height: 50px;
             background-color: #007bff;
@@ -23,30 +22,34 @@
             border-radius: 50%;
             cursor: pointer;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
         }
 
-        /* Help panel */
-        #helpPanel {
+        /* Popup container */
+        #helpPopup {
+            display: none;
             position: fixed;
-            bottom: -150px;
-            left: 0;
-            width: 100%;
+            bottom: 80px;
+            right: 20px;
+            width: 250px;
             background-color: white;
             padding: 15px;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            font-size: 14px;
+        }
+
+        /* Close button */
+        #closePopup {
+            display: block;
+            margin-top: 10px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
             text-align: center;
-            transition: bottom 0.3s ease;
-        }
-
-        /* Show panel */
-        #helpPanel.active {
-            bottom: 0;
-        }
-
-        /* Arrow rotation when active */
-        #helpButton.active {
-            transform: translateX(-50%) rotate(180deg);
         }
     </style>
 </head>
@@ -62,6 +65,40 @@
         <div class="header__title">
             <h1>Hello, There!</h1>
             <h2>How can I help?</h2>
+        </div>
+        <div class="suggests">
+            <div class="suggests__item">
+                <p class="suggests__item-text">
+                    Give tips on helping kids finish their homework on time
+                </p>
+                <div class="suggests__item-icon">
+                    <i class='bx bx-stopwatch'></i>
+                </div>
+            </div>
+            <div class="suggests__item">
+                <p class="suggests__item-text">
+                    Help me write an out-of-office email
+                </p>
+                <div class="suggests__item-icon">
+                    <i class='bx bx-edit-alt'></i>
+                </div>
+            </div>
+            <div class="suggests__item">
+                <p class="suggests__item-text">
+                   Give me phrases to learn a new language 
+                </p>
+                <div class="suggests__item-icon">
+                    <i class='bx bx-compass'></i>
+                </div>
+            </div>
+            <div class="suggests__item">
+                <p class="suggests__item-text">
+                    Show me how to build something by hand
+                </p>
+                <div class="suggests__item-icon">
+                    <i class='bx bx-wrench'></i>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -84,26 +121,28 @@
         </p>
     </section>
 
-    <!-- Help Panel -->
-    <div id="helpPanel">
-        <p>Need help? This is Astra, your AI assistant. You can ask me anything!</p>
-    </div>
+    <!-- Help Button -->
+    <button id="helpButton">?</button>
 
-    <!-- Arrow Button -->
-    <button id="helpButton"><i class='bx bx-chevron-up'></i></button>
+    <!-- Help Popup -->
+    <div id="helpPopup">
+        <p>Need help? This is Astra, your AI assistant. You can ask me anything!</p>
+        <button id="closePopup">Close</button>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="script.js"></script>
 
     <script>
-        const helpButton = document.getElementById("helpButton");
-        const helpPanel = document.getElementById("helpPanel");
+        document.getElementById("helpButton").addEventListener("click", function() {
+            document.getElementById("helpPopup").style.display = "block";
+        });
 
-        helpButton.addEventListener("click", function() {
-            helpPanel.classList.toggle("active");
-            helpButton.classList.toggle("active");
+        document.getElementById("closePopup").addEventListener("click", function() {
+            document.getElementById("helpPopup").style.display = "none";
         });
     </script>
 </body>
 </html>
+
