@@ -93,7 +93,7 @@ body.hide-header .header{
 
 .header__title h1{
     width: fit-content;
-    background: linear-gradient(to right, #db6efa, #e24ada, #e2d4d4);
+    background: linear-gradient(to right, #b9d3f7, #b4c3db, #e2d4d4);
     background-clip: text;
     -webkit-background-clip: text;
     text-fill-color: transparent;
@@ -338,7 +338,7 @@ body.hide-header .header{
     width: 100%;
     border-radius: 0.135rem;
     background-position: -800px 0;
-    background: linear-gradient(to right, #da13e1e1 30%, var(--primary-color) 60%, #da13e1e1);
+    background: linear-gradient(to right, #b9d3f7 30%, var(--primary-color) 60%, #b9d3f7);
     animation: loading 3s linear infinite;
 }
 
