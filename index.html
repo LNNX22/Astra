@@ -3,62 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Under Maintenance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <title>AstraAI</title>
     <style>
-        body {
+
+body {
+            font-family: Arial, sans-serif;
+            background: #121212;
+            color: #ffffff;
+        }
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            background: #1e1e1e;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            display: none;
+            z-index: 1000;
+        }
+        .popup-header {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            height: 100vh;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            font-family: 'Poppins', sans-serif;
-            text-align: center;
-            color: #fff;
-            margin: 0;
         }
-        .container {
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            border-radius: 15px;
-            max-width: 500px;
-        }
-        h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-        h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            font-weight: 500;
-        }
-        p {
+        .popup-header .close-btn {
+            cursor: pointer;
             font-size: 18px;
-            opacity: 0.8;
+            font-weight: bold;
+            color: #fcf7f7;
         }
-        .loader {
-            margin: 20px auto;
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            border-top: 5px solid #fff;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            z-index: 999;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Astra AI</h1>
-        <h2>Website Down for Updates</h2>
-        <div class="loader"></div>
-        <p>We are currently performing some maintenance. The website will return shortly. Thank you for your patience!</p>
+    <div class="popup-overlay" id="popupOverlay"></div>
+    <div class="popup" id="popup">
+        <div class="popup-header">
+            <strong>Latest Updates</strong>
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+        </div>
+        <p>- Updated Loading animation</p>
+        <p>- Changed user profile to match Astra's theme</p>
+        <p>- Minor bug fixes</p>
+        <p>- Added updates pop up</p>
+        <p>- & more + bug fixes</p>
     </div>
+    <script>
+        window.onload = function() {
+            document.getElementById("popup").style.display = "block";
+            document.getElementById("popupOverlay").style.display = "block";
+        };
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+            document.getElementById("popupOverlay").style.display = "none";
+        }
+    </script>
+    
+    </style>
+</head>
+
+<body>
+    
+    <nav class="navbar">
+        <h3 class="navbar__logo">Astra</h3>
+        <button class="navbar__button" id="themeToggler"><i class='bx bx-sun'></i></button>
+    </nav>
+
+    <header class="header">
+        <div class="header__title">
+            <h1>Hello, There!</h1>
+            <h2>How can I help?</h2>
+            <sub>made with gemini</sub>
+        </div>
+        <div class="suggests">
+            <div class="suggests__item">
+                <p class="suggests__item-text">
+                    Give me tips on how to draw better
+                </p>
+                <div class="suggests__item-icon">
+                    <i class='bx bx-stopwatch'></i>
+                </div>
+            </div>
+            <div class="suggests__item">
+                <p class="suggests__item-text">
+                    Help me with my essay
+                </p>
+                <div class="suggests__item-icon">
+                    <i class='bx bx-text'></i>
+                </div>
+            </div>
+            <div class="suggests__item">
+                <p class="suggests__item-text">
+                   Give me tips on how to learn a new language
+                </p>
+                <div class="suggests__item-icon">
+                    <i class='bx bx-book-reader'></i>
+                </div>
+            </div>
+            <div class="suggests__item">
+                <p class="suggests__item-text">
+                    Help me code a website for my store
+                </p>
+                <div class="suggests__item-icon">
+                    <i class='bx bx-code-alt' ></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="chats"></section>
+
+    <section class="prompt">
+        <form action="#" class="prompt__form" novalidate>
+            <div class="prompt__input-wrapper">
+                <input type="text" placeholder="Enter a prompt here" class="prompt__form-input" required>
+                <button class="prompt__form-button" id="sendButton">
+                    <i class='bx bx-send'></i>
+                </button>
+                <button class="prompt__form-button" id="deleteButton">
+                    <i class='bx bx-trash'></i>
+                </button>
+            </div>
+        </form>
+        <p class="prompt__disclaim">
+            Astra may display inaccurate information, it is best to double-check its responses.
+        </p>
+    </section>
+
+    <!-- Help Button -->
+    <button id="helpButton">?</button>
+
+    <!-- Help Popup -->
+    <div id="helpPopup">
+        <p>Need help? This is Astra, your AI assistant. You can ask me anything!</p>
+        <button id="closePopup">Close</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        document.getElementById("helpButton").addEventListener("click", function() {
+            document.getElementById("helpPopup").style.display = "block";
+        });
+
+        document.getElementById("closePopup").addEventListener("click", function() {
+            document.getElementById("helpPopup").style.display = "none";
+        });
+    </script>
 </body>
 </html>
